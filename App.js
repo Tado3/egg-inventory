@@ -140,7 +140,7 @@ const App = () => {
         COALESCE(SUM(produced_eggs), 0) as totalProduced,
         COALESCE(SUM(breakages), 0) as totalBreakages,
         COALESCE(SUM(sold_eggs), 0) as totalSold,
-        COALESCE(SUM(sold_eggs * price_per_egg), 0) as totalCashSales,
+        COALESCESUM(sold_eggs * price_per_egg), 0) as totalCashSales,
         COALESCE(SUM(credit_amount), 0) as totalCredits
       FROM daily_records`
     ).then(result => {
